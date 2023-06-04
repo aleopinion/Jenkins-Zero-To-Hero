@@ -8,10 +8,10 @@ pipeline {
       steps {
         sh 'npn clean package'
       }
-            steps {
+      steps {
         sh 'npn install package'
       }
-            post {
+        post {
         success {
           echo ' node is good - continue - ok opinion'
         }
@@ -31,14 +31,16 @@ pipeline {
         success {
           echo ' maven is good - continue - ok opinion'
         }
-    }
-        stage('DB') {
-      agent {
-        docker { image 'mysql:latest' }
       }
-      steps {
+        stage('DB') {
+          agent {
+            docker { image 'mysql:latest' }
+        }
+          steps {
         sh 'install mysql'
+        }
       }
     }
   }
 }
+

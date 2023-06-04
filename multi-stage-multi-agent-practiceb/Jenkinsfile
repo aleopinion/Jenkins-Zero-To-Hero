@@ -8,7 +8,8 @@ pipeline {
             steps {
                sh 'npm install'
             }
-        stage ('Run Application') 
+        }
+        stage ('Run Application') {
           agent {
             docker { image 'node:16-alpine' }
             }

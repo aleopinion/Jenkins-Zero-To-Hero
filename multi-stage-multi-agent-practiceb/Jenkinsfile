@@ -8,7 +8,10 @@ pipeline {
       steps {
         sh 'npm install'
       }
-        stage ('Run Application') {
+        stage ('Run Application') 
+        agent {
+          docker { image 'node:16-alpine' }
+        {
             steps {
                 sh 'npm start'
             }
@@ -19,7 +22,6 @@ pipeline {
                 sh 'javac HelloWorld.java'
             }
         }
-
         stage ('Run') {
             steps {
                 sh 'java HelloWorld'

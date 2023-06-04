@@ -8,11 +8,11 @@ pipeline {
       steps {
         sh 'npm install'
       }
-            post {
-        success {
-          echo ' node is good - continue - ok opinion'
+        stage ('Run Application') {
+            steps {
+                sh 'npm start'
+            }
         }
-      }
     }
         stage ('Build') {
             steps {

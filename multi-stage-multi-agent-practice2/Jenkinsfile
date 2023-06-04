@@ -15,27 +15,27 @@ pipeline {
               }
               }
     }
-    stage('Back-end') {
-      agent {
-        docker { image 'maven:3.8.1-adoptopenjdk-11' }
-      }
-      steps {
-        sh 'mvn clean package'
-      }
-                  steps {
-        sh 'mvn install package'
-      }
+        stage('Back-end') {
+          agent {
+            docker { image 'maven:3.8.1-adoptopenjdk-11' }
+            }
+            steps {
+              sh 'mvn clean package'
+              }
+            steps {
+              sh 'mvn install package'
+              }
             post {
-        success {
-          echo ' maven is good - continue - ok opinion'
-        }
-      }
+              success {
+                echo ' maven is good - continue - ok opinion'
+                  }
+              }
         stage('DB') {
           agent {
             docker { image 'mysql:latest' }
-        }
-          steps {
-        sh 'install mysql'
+            }
+            steps {
+              sh 'install mysql'
         }
       }
     }
